@@ -9,18 +9,18 @@
       <ion-row>
         <ion-col class="ion-text-center">
             <ion-card class="card-container box">
-              <form [formGroup] = "formularioRegistro">
+              <form>
                 <ion-item class=" label-container">
                   <ion-label class="ion-text-center" position="floating">Usuario</ion-label>
-                  <ion-input formControlName="nombre" type="text"></ion-input>
+                  <ion-input [(ngModel)]="usuario" name="usuario"  required></ion-input>
                 </ion-item>
                 <ion-item class="label-container">
                   <ion-label position="floating" class="ion-text-center ">Password</ion-label>
-                  <ion-input formControlName="password" type="password"></ion-input>
+                  <ion-input [(ngModel)]="contrasena" name="contrasena" type="password"  required></ion-input>
                 </ion-item>
                 <ion-item class="label-container">
                   <ion-label position="floating" class="ion-text-center ">Email</ion-label>
-                  <ion-input formControlName="email" type="text"></ion-input>
+                  <ion-input [(ngModel)]="correo" name="correo"  required></ion-input>
                 </ion-item>
                 <p>Ya tienes una cuenta? <a href="login">Iniciar sesion</a></p>
               </form>
@@ -28,13 +28,15 @@
         </ion-col>
       </ion-row>
 
-     
+
 
       <ion-row>
         <ion-col class="ion-text-center">
-          <ion-button  shape="round" class="boton-registro" color="success">Registrar</ion-button> 
+          <ion-button (click)="registerUser()" shape="round" class="boton-registro" color="success">Registrar</ion-button> 
         </ion-col>
       </ion-row>
     </ion-grid>
   </div>
 </ion-content>
+
+

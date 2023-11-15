@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'; //librerias importadas para crear formulario, controlar y validar registros
 import { NavigationExtras, Router } from '@angular/router';
 import { AlertController, NavController } from '@ionic/angular';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -9,26 +10,31 @@ import { AlertController, NavController } from '@ionic/angular';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
+  constructor(private http: HttpClient) { }
 
-
-
-
-
-  //variable con formato de formGroup
-  formularioRegistro: FormGroup;
-
-  //contructor publico que se crea a partir del FormBuilder, se le dan parametros que se quieren aplicar en el formlario
-  constructor(public fb: FormBuilder, public alertController: AlertController, public navCtrl: NavController, private router: Router) { //tambien se importa un public AlertController para la funcion async que utiliza este metodo
-      this.formularioRegistro = this.fb.group({
-      'nombre': new FormControl("",Validators.required), //como será llamado, se le asigna como nuevo objeto new FormControl y se le dan los parametros que estará vacio y que se requiere validar
-      'password': new FormControl("",Validators.required),
-      'email': new FormControl("",Validators.required)
-    });
-   }
+  usuario: string;
+  contrasena: string;
+  correo: string;
 
   ngOnInit() {
   }
+  registerUser() {
+    console.log('usuario:', this.usuario);
+    console.log('contrasena:', this.contrasena);
+    const formData = new FormData();
+    formData.append('usuario', this.usuario); 
+    formData.append('contrasena', this.contrasena); 
+    formData.append('correo', this.correo); 
 
+    this.http.post('http://18.230.155.252/registrar_usuario', formData)
+      .subscribe(response => {
+        console.log(response);
+        // Manejar la respuesta según tus necesidades
+      });
+
+
+
+  }
 
 
 }

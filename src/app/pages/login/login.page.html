@@ -12,11 +12,11 @@
                 <form [formGroup] = "formularioLogin">
                   <ion-item class=" label-container">
                     <ion-label class="ion-text-center" position="floating">Usuario</ion-label>
-                    <ion-input formControlName="nombre" [(ngModel)]="user.usuario"></ion-input>
+                    <ion-input formControlName="nombre" [(ngModel)]="usuario"></ion-input>
                   </ion-item>
                   <ion-item class="label-container">
                     <ion-label position="floating" class="ion-text-center ">Password</ion-label>
-                    <ion-input formControlName="password" type="password" [(ngModel)]="user.password"></ion-input>
+                    <ion-input formControlName="password" type="password" [(ngModel)]="contrasena"></ion-input>
                   </ion-item>
                   <p>Todavia no te registras? <a href="register">Registrarse</a></p>
                 </form>
@@ -28,7 +28,7 @@
 
         <ion-row>
           <ion-col class="ion-text-center">
-            <ion-button (click)="ingresar()" shape="round" class="boton-login" color="success">Ingresar</ion-button> 
+            <ion-button (click)="Ingresar()" shape="round" class="boton-login" color="success">Ingresar</ion-button> 
           </ion-col>
         </ion-row>
       </ion-grid>

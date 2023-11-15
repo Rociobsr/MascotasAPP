@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+        CRUD USUARIOS
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card>
+    <ion-list>
+      <ion-button expand="full" (click)="ngOnInit()" >Actualizar</ion-button>
+      <br><br><br>
+      <ion-col size="6" *ngFor="let item of jsonData; let i = index">
+        
+        <form (ngSubmit)="submitForm(i)" #formulario="ngForm" method="post" [action]="'http://18.230.155.252:80/post_data_usuarios/' + item.id">
+          <ion-item>
+            <ion-label position="stacked">Nombre</ion-label>
+            <ion-input name="nombre" [(ngModel)]="item.usuario" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Contraseña</ion-label>
+            <ion-input name="contrasena" [(ngModel)]="item.contrasenna" required></ion-input>
+            <ion-input name="id" [(ngModel)]="item.id" required style="display: none;"></ion-input>
+          </ion-item>
+          <ion-button expand="full" type="submit">Editar</ion-button>
+          <ion-button expand="full" (click)="deleteUser(item.id)" >Eliminar</ion-button>
+        </form>
+      </ion-col>
+      </ion-list>
+    </ion-card>
+</ion-content>
+
+
+
+
+

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'; //librerias importadas para crear formulario, controlar y validar registros
 import { NavigationExtras, Router } from '@angular/router';
 import { AlertController, NavController } from '@ionic/angular';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,9 @@ export class LoginPage implements OnInit {
     password: '',
   };
 
+  usuario: string;
+  contrasena: string;
+
   //se le da formato a la variable
   formularioLogin: FormGroup;
 
@@ -22,7 +26,8 @@ export class LoginPage implements OnInit {
     public fb: FormBuilder,
     public alertController: AlertController,
     public navCtrl: NavController,
-    private router: Router
+    private router: Router,
+    private http: HttpClient
   ) {
     //modulos a importar
 
@@ -33,18 +38,25 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {}
+  Ingresar() {
+    console.log('usuario:', this.usuario);
+    console.log('contrasena:', this.contrasena);
+    const formData = new FormData();
+    formData.append('usuario', this.usuario); 
+    formData.append('contrasena', this.contrasena); 
 
-  async ingresar() {
-    this.user.usuario=this.formularioLogin.value.nombre;
-    localStorage.setItem('ingresado', 'true');
+    this.http.post('http://18.230.155.252/login', formData)
+      .subscribe(response => {
+        console.log(response);
+        if (response === true) {
+          // Realizar acciones específicas si la respuesta es True
+          localStorage.setItem('ingresado', 'true');
+          localStorage.setItem('usuario',this.usuario)
+          this.router.navigate(['/home']);
 
-    let navigationExtras: NavigationExtras = {
-      state: {
-        user: this.user,
-      },
-    };
-    localStorage.setItem('usuario',this.formularioLogin.value.nombre)
-    console.log(this.formularioLogin.value.nombre)
-    this.router.navigate(['/home'], navigationExtras);
+        }
+      });
+
+
   }
 }

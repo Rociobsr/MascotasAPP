@@ -1,7 +1,0 @@
-{
-  "name": "MyZoo",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}

@@ -50,9 +50,13 @@ const routes: Routes = [
     loadChildren: () => import('./crear-busqueda/crear-busqueda.module').then( m => m.CrearBusquedaPageModule)
   },
   {
+    path: 'listar-usuarios',
+    loadChildren: () => import('./pages/listar-usuarios/listar-usuarios.module').then( m => m.ListarUsuariosPageModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./pages/notfound/notfound.module').then( m => m.NotfoundPageModule)
-  },
+  }
 
 
 ];
