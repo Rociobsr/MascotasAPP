@@ -1,0 +1,25 @@
+{
+  "mascotas": [
+    {
+      "id": 4,
+      "nombre": "Lunaaa",
+      "raza": "Rotbailer",
+      "contacto": "Celular",
+      "descripcion": "Es linda"
+    },
+    {
+      "id": 5,
+      "nombre": "Cloy",
+      "raza": "Labrador",
+      "contacto": "5678999",
+      "descripcion": "Es mediana"
+    },
+    {
+      "id": 6,
+      "nombre": "Rusioo",
+      "raza": "Gato",
+      "contacto": "Wsp",
+      "descripcion": "Color naranja"
+    }
+  ]
+}

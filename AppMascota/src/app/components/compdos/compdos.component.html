@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>CrearBusqueda</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button  [routerLink]="['/home']"> 
+    
+    </ion-button>
+    <br> <br>
+    <ion-item>
+      <ion-label position="floating">Hora</ion-label>
+      <ion-input type="text" [(ngModel)]="hora"></ion-input>  <!-- Vincula con la variable username -->
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Lugar</ion-label>
+      <ion-input type="text" [(ngModel)]="lugar"></ion-input>  <!-- Vincula con la variable username -->
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Mensaje</ion-label>
+      <ion-input type="text" [(ngModel)]="mensaje"></ion-input>  <!-- Vincula con la variable username -->
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Reconpensa</ion-label>
+      <ion-input type="text" [(ngModel)]="reconpensa"></ion-input>  <!-- Vincula con la variable username -->
+    </ion-item>
+    <ion-button expand="block" color="primary" (click)="crearBusqueda()">Crear Busqueda</ion-button>
+    <ion-button expand="block" color="primary" (click)="cancelar()">Cancelar Busqueda</ion-button>
+  
+  
+    <br> <br> <br> <br>
+   <app-map></app-map>
+</ion-content>

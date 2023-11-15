@@ -1,0 +1,34 @@
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Ingresar Mascota</ion-card-title>
+    </ion-card-header>
+    <ion-item>
+      <ion-label position="floating" >Nombre de la Mascota</ion-label>
+      <ion-input [(ngModel)]="mascota.nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" >Raza de la mascota</ion-label>
+      <ion-input [(ngModel)]="mascota.raza"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" >Contacto</ion-label>
+      <ion-input [(ngModel)]="mascota.contacto"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" >Descripcion</ion-label>
+      <ion-input [(ngModel)]="mascota.descripcion"></ion-input>
+    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <ion-button expand="block" (click)=" updateMasc()" color="success" shape="round">
+            Guardar Cambios
+          </ion-button>
+        </ion-col>
+        <ion-col size="6">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+</ion-content>

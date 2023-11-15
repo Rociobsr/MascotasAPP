@@ -1,0 +1,83 @@
+<ion-content [fullscreen]="true">
+  <div class="glass-content">
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-text-center" style="width: 200px;">
+            <img class="logo" src="assets/img/bolita.png" alt="logo">
+        </ion-col>
+        <ion-col size="6" class="ion-text-center">
+         
+          <ion-card>
+            <ion-card-title>Hola {{usuario}}</ion-card-title>
+          </ion-card>
+          <ion-button (click)="cerrarSesion()" color="success" type="button" expand="block" shape="round">
+            Cerrar sesión
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Ingresar datos de mi mascota</ion-card-title>
+        </ion-card-header>
+        <ion-item>
+          <ion-label position="floating" >Nombre de la mascota</ion-label>
+          <ion-input [(ngModel)]="mascota.nombre"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating" >Raza de la mascota</ion-label>
+          <ion-input [(ngModel)]="mascota.raza"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating" >Contacto</ion-label>
+          <ion-input [(ngModel)]="mascota.contacto"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating" >Descripcion</ion-label>
+          <ion-input [(ngModel)]="mascota.descripcion"></ion-input>
+        </ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="6">
+              <ion-button expand="block" color="success" shape="round" (click)="limpiar()">
+                Limpiar
+              </ion-button>
+            </ion-col>
+            <ion-col size="6">
+              <ion-button expand="block" (click)="addMasc()" color="success" shape="round">
+                Agregar 
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+
+      <ion-row *ngFor="let masc of mascotas">
+        <ion-col class="ion-text-center">
+          <ion-card>
+            <ion-col size="12">
+              <ion-card-header>
+                <ion-card-title> {{masc.nombre}} </ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                Raza: {{masc.raza}}
+                <br>
+                Contacto: {{masc.contacto}}
+                <br>
+                Descripcion: {{masc.descripcion}}
+              </ion-card-content>
+            </ion-col>
+            <ion-row style="border-bottom-width: 40px; padding-bottom: 0px; margin-top: 30px;">
+              <ion-col size="6"> 
+                <ion-button color="tertiary"  [routerLink]="['/edit-masc',masc.id]" (click)="getMascId(masc.id)" expand="block"  shape="round">Editar</ion-button> 
+              </ion-col>
+              <ion-col size="6"> 
+                <ion-button  color="danger" expand="block"  (click)="deleteMasc(masc.id)" shape="round">Borrar</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

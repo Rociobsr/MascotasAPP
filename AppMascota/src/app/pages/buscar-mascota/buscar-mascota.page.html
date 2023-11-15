@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-searchbar
+      search-icon="search-circle" 
+      animated="true" 
+      show-clear-button="focus" 
+      clear-icon="trash-bin"
+      debounce="800" 
+      placeholder="Search for area, street..."
+      (ionInput)="onSearchChange($event)">
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">buscar-mascota</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-button  [routerLink]="['/home']">
+    <br><br>
+    
+    <ion-icon name="home"></ion-icon>
+    Inicio
+    </ion-button>
+
+    
+    <p>Hora: {{ horario }}</p>
+    <p>Lugar: {{ lugar }}</p>
+    <p>Mensaje: {{ mensaje }}</p>
+    <p>Reconpensa: {{ reconpensa }}</p>
+</ion-content>
+

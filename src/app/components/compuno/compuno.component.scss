@@ -1,0 +1,32 @@
+
+ion-content{
+    --ion-background-color: url(/assets/img/fondo.jpg) no-repeat center center / cover;
+    
+  }
+  
+  ion-card{
+    --ion-background-color: rgb(250, 247, 247);
+    font-size: 30px;
+  }
+
+
+
+  
+
+  .glass-content {
+  /* From https://css.glass */
+    background: rgba(44, 44, 44, 0.548);
+    border-radius: 16px;
+    box-shadow: 0 6px 80px rgba(0, 0, 0, 0.432);
+    backdrop-filter: blur(2.1px);
+    -webkit-backdrop-filter: blur(12.1px);
+    width: 100%;
+    min-height: 100vh;
+  }
+  
+  .titulo{
+    font-size: 40px;
+    color: wheat;
+    font-weight: bolder;
+  }
+
