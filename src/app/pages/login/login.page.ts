@@ -45,7 +45,7 @@ export class LoginPage implements OnInit {
     formData.append('usuario', this.usuario); 
     formData.append('contrasena', this.contrasena); 
 
-    this.http.post('http://18.230.155.252/login', formData)
+    this.http.post('http://18.231.154.125/login', formData)
       .subscribe(response => {
         console.log(response);
         if (response === true) {

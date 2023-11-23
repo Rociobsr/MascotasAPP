@@ -12,7 +12,7 @@
       <br><br><br>
       <ion-col size="6" *ngFor="let item of jsonData; let i = index">
         
-        <form (ngSubmit)="submitForm(i)" #formulario="ngForm" method="post" [action]="'http://18.230.155.252:80/post_data_usuarios/' + item.id">
+        <form (ngSubmit)="submitForm(i)" #formulario="ngForm" method="post" [action]="'http://18.231.154.125/post_data_usuarios/' + item.id">
           <ion-item>
             <ion-label position="stacked">Nombre</ion-label>
             <ion-input name="nombre" [(ngModel)]="item.usuario" required></ion-input>

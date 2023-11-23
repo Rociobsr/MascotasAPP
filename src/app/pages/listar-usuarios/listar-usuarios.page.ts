@@ -10,7 +10,7 @@ export class ListarUsuariosPage implements OnInit {
   jsonData: any[];
   constructor(private http: HttpClient) { }
   ngOnInit() {
-    const url = 'http://18.230.155.252:80/get_data_usuarios'; // Reemplaza esto con la URL real de tu JSON
+    const url = 'http://18.231.154.125/get_data_usuarios'; // Reemplaza esto con la URL real de tu JSON
   
     this.http.get(url).subscribe((data: any) => {
       console.log('Datos JSON:', data);
@@ -35,7 +35,7 @@ export class ListarUsuariosPage implements OnInit {
   }
 
   deleteUser(id: number) {
-    const deleteUrl = 'http://18.230.155.252:80/delete_usuario/' + id; // Reemplaza con la URL correcta
+    const deleteUrl = 'http://18.231.154.125/delete_usuario/' + id; // Reemplaza con la URL correcta
     console.log('enviado')
     fetch(deleteUrl, {
       method: 'POST',
