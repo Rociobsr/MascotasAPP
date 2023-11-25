@@ -1,14 +1,15 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-        CRUD USUARIOS
+        EDITAR USUARIOS
     </ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
   <ion-card>
     <ion-list>
-      <ion-button expand="full" (click)="ngOnInit()" >Actualizar</ion-button>
+      <ion-button color="success" type="button" expand="block" shape="round" (click)="ngOnInit()" >Actualizar</ion-button>
+      <ion-button expand="block" color="success" type="button"  shape="round" [routerLink]="['/home']">Inicio</ion-button>
       <br><br><br>
       <ion-col size="6" *ngFor="let item of jsonData; let i = index">
         
@@ -22,8 +23,8 @@
             <ion-input name="contrasena" [(ngModel)]="item.contrasenna" required></ion-input>
             <ion-input name="id" [(ngModel)]="item.id" required style="display: none;"></ion-input>
           </ion-item>
-          <ion-button expand="full" type="submit">Editar</ion-button>
-          <ion-button expand="full" (click)="deleteUser(item.id)" >Eliminar</ion-button>
+          <ion-button color="success" type="button" expand="block" shape="round" type="submit">Editar</ion-button>
+          <ion-button color="success" type="button" expand="block" shape="round"(click)="deleteUser(item.id)" >Eliminar</ion-button>
         </form>
       </ion-col>
       </ion-list>
