@@ -45,7 +45,7 @@ export class LoginPage implements OnInit {
     formData.append('usuario', this.usuario); 
     formData.append('contrasena', this.contrasena); 
 
-    this.http.post('http://54.94.46.183/login', formData)
+    this.http.post('https://flapirest.ddns.net/login', formData)
       .subscribe(response => {
         console.log(response);
         if (response === true) {
