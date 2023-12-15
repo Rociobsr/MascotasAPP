@@ -31,7 +31,9 @@ export class CompunoComponent  implements OnInit {
   constructor(private activateRoute: ActivatedRoute, private router: Router, private api: ServiceRestService, private toastController: ToastController) { 
     this.usuario=localStorage.getItem("usuario")
   }
-  ngOnInit():void{}
+  ngOnInit():void{
+    this.getMasclist();
+  }
  
 
   limpiar(){
@@ -47,63 +49,44 @@ export class CompunoComponent  implements OnInit {
   }
 
   //====GET ALL Mascota=====
-  getMasclist(){
-    this.api.getMascList().subscribe((data) =>{
-      console.log(data);
-      this.mascotas = data;
-    });
+
+  getMasclist() {
+    const storedMascotas = localStorage.getItem('mascotas');
+    this.mascotas = storedMascotas ? JSON.parse(storedMascotas) : [];
   }
 
     //=====AGREGAR Mascota======
-    addMasc(){
-      if (this.mascota.nombre == "" || this.mascota.raza == "" || this.mascota.contacto == "" || this.mascota.descripcion == "") {
-        this.presentToast({
-          message: ' Error al registrar Mascota, debe llenar los campos ',
-          duration: 3000,
-          position: 'middle',
-          icon: 'alert-circle-outline'
-        });
-        return;
-      }else{
-        this.api.addMasc(this.mascota).subscribe({
-          next: (() => {
-            console.log("Masc creado: "+ this.mascota)
-            this.presentToast({
-              message: ' Mascota creada ',
-              duration: 3000,
-              position: 'middle',
-              icon: 'alert-circle-outline'
-            });
-            this.getMasclist();
-            this.limpiar();
-          })
-        })
+    addMasc() {
+      if (this.mascota.nombre && this.mascota.raza && this.mascota.contacto && this.mascota.descripcion) {
+        const existingMascotas = JSON.parse(localStorage.getItem('mascotas') || '[]');
+        this.mascota.id = Date.now(); // Assigning a unique ID, you may use a better strategy for ID generation
+        existingMascotas.push(this.mascota);
+        localStorage.setItem('mascotas', JSON.stringify(existingMascotas));
+        this.presentToast({ message: 'Mascota creada' });
+        this.limpiar();
+        this.getMasclist();
+      } else {
+        this.presentToast({ message: 'Error al registrar Mascota, debe llenar los campos' });
       }
     }
 
-    getMascId(id: any){
-      this.api.getMascId(id).subscribe((data) => {
-        console.log(data);
-        this.mascota = data
-      })
+    getMascId(id: any) {
+      const existingMascotas = JSON.parse(localStorage.getItem('mascotas') || '[]');
+      const mascota = existingMascotas.find(m => m.id === id);
+      if (mascota) {
+        // Logic to handle a specific mascot based on ID
+        console.log(mascota);
+      } else {
+        console.error('Mascota no encontrada');
+      }
     }
 
-    deleteMasc(id: any){
-      this.api.deleteMasc(id).subscribe({
-        next: (() => {
-          this.presentToast({
-            message: 'Mascota eliminada',
-            duration: 3500,
-            position: 'middle',
-            icon: 'alert-circle-outline'
-          });
-          console.log("Mascota eliminado");
-          this.getMasclist();
-        }),
-        error: (error => {
-          console.log("Error"+ error)
-        })
-      })
+    deleteMasc(id: any) {
+      let existingMascotas = JSON.parse(localStorage.getItem('mascotas') || '[]');
+      existingMascotas = existingMascotas.filter(m => m.id !== id);
+      localStorage.setItem('mascotas', JSON.stringify(existingMascotas));
+      this.presentToast({ message: 'Mascota eliminada' });
+      this.getMasclist();
     }
 
     cerrarSesion(){
@@ -112,10 +95,10 @@ export class CompunoComponent  implements OnInit {
     }
 
  
-   async presentToast(opts?: ToastOptions) {
-    const toast = await this.toastController.create(opts);
-    toast.present();
-  }
+    async presentToast(opts?: ToastOptions) {
+      const toast = await this.toastController.create(opts);
+      toast.present();
+    }
  
   segmentChanged($event: any){
     console.log($event);    

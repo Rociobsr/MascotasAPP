@@ -13,23 +13,25 @@
       <br><br><br>
       <ion-col size="6" *ngFor="let item of jsonData; let i = index">
         
-        <form (ngSubmit)="submitForm(i)" #formulario="ngForm" method="post" [action]="'https://flapirest.ddns.net/post_data_usuarios/' + item.id">
+        <form (ngSubmit)="submitForm(item)" #formulario="ngForm" method="post">
           <ion-item>
             <ion-label position="stacked">Nombre</ion-label>
-            <ion-input name="nombre" [(ngModel)]="item.usuario" required></ion-input>
+            <ion-input name="usuario" [(ngModel)]="item.usuario" required></ion-input>
           </ion-item>
           <ion-item>
             <ion-label position="stacked">Contraseña</ion-label>
-            <ion-input name="contrasena" [(ngModel)]="item.contrasenna" required></ion-input>
+            <ion-input name="contrasenna" [(ngModel)]="item.contrasenna" required></ion-input>
             <ion-input name="id" [(ngModel)]="item.id" required style="display: none;"></ion-input>
           </ion-item>
-          <ion-button color="success" type="button" expand="block" shape="round" type="submit">Editar</ion-button>
-          <ion-button color="success" type="button" expand="block" shape="round"(click)="deleteUser(item.id)" >Eliminar</ion-button>
+          <ion-button color="success" type="submit" expand="block" shape="round">Editar</ion-button>
+          <ion-button color="success" type="button" expand="block" shape="round" (click)="deleteUser(item.id)">Eliminar</ion-button>
         </form>
       </ion-col>
       </ion-list>
     </ion-card>
 </ion-content>
+
+
 
 
 
