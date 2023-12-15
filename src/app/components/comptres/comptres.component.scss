@@ -1,16 +1,32 @@
-/* comptres.component.scss */
-
-ion-content {
-    background-color: #f0f0f0; /* Fondo gris claro */
+ion-card {
+    background-color: #f0f0f0; /* Color de fondo gris claro */
+    color: #000000; /* Texto negro */
+    margin-bottom: 10px; /* Agrega espacio entre los componentes */
   }
   
-  ion-card {
-    background-color: #333; /* Fondo gris oscuro */
-    color: #ffffff; /* Texto blanco */
+  ion-textarea {
+    min-height: 100px; /* Altura mínima de la textarea */
   }
   
-  ion-button {
-    --background: #800080; /* Morado */
-    --color: #ffffff; /* Texto blanco */
+  .image-preview {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center; /* Centra la imagen horizontalmente */
+    align-items: center; /* Centra la imagen verticalmente */
+  }
+  
+  .report-label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .submitted-report {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .submitted-report img {
+    max-width: 100%; /* Ajusta el ancho máximo de la imagen para que sea responsiva */
   }
   
