@@ -1,32 +1,38 @@
-ion-card {
-    background-color: #f0f0f0; /* Color de fondo gris claro */
-    color: #000000; /* Texto negro */
-    margin-bottom: 10px; /* Agrega espacio entre los componentes */
+ion-content {
+    --ion-background-color: url(/assets/img/fondo.jpg) no-repeat center center / cover;
   }
   
-  ion-textarea {
-    min-height: 100px; /* Altura mínima de la textarea */
+  ion-card {
+    --ion-background-color: rgb(250, 247, 247);
+    font-size: 30px;
   }
   
-  .image-preview {
-    margin-top: 10px;
+  .glass-content {
+    /* From https://css.glass */
+    background: rgba(44, 44, 44, 0.548);
+    border-radius: 16px;
+    box-shadow: 0 6px 80px rgba(0, 0, 0, 0.432);
+    backdrop-filter: blur(2.1px);
+    -webkit-backdrop-filter: blur(12.1px);
+    width: 100%;
+    min-height: 100vh;
+  }
+  
+  .titulo {
+    font-size: 40px;
+    color: wheat;
+    font-weight: bolder;
+  }
+  
+.image-preview img {
+    max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
+    height: auto; /* Permite que la altura se ajuste proporcionalmente al ancho */
+  }
+  
+  ion-card-content {
     display: flex;
-    justify-content: center; /* Centra la imagen horizontalmente */
-    align-items: center; /* Centra la imagen verticalmente */
-  }
-  
-  .report-label {
-    display: block;
-    margin-bottom: 10px;
-  }
-  
-  .submitted-report {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .submitted-report img {
-    max-width: 100%; /* Ajusta el ancho máximo de la imagen para que sea responsiva */
+    flex-direction: column; /* Apila la imagen y el texto verticalmente */
+    align-items: center; /* Centra los elementos horizontalmente */
+    text-align: center; /* Centra el texto horizontalmente */
   }
   

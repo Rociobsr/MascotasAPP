@@ -31,15 +31,27 @@
     </ion-card>
   
     <!-- Mostrar los informes enviados -->
-    <ion-list *ngIf="submittedReports.length > 0">
-      <ion-item *ngFor="let report of submittedReports" class="submitted-report">
-        <ion-label class="report-label">{{ report.petName }}</ion-label>
-        <div class="image-preview">
-          <img [src]="report.capturedImage" alt="Mascota Encontrada">
-        </div>
-        <ion-label class="report-label">{{ report.description }}</ion-label>
-        <ion-button (click)="eliminarReporte(report)" color="danger" expand="full">Eliminar</ion-button>
-      </ion-item>
-    </ion-list>
-  </ion-content>
+    <ion-row *ngFor="let report of submittedReports">
+        <ion-col class="ion-text-center">
+          <ion-card>
+            <ion-col size="12">
+              <ion-card-header>
+                <ion-card-title>{{ report.petName }}</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <div class="image-preview">
+                  <img [src]="report.capturedImage" alt="Mascota Encontrada">
+                </div>
+                Descripción: {{ report.description }}
+              </ion-card-content>
+            </ion-col>
+            <ion-row style="border-bottom-width: 40px; padding-bottom: 0px; margin-top: 30px;">
+              <ion-col size="12"> 
+                <ion-button color="danger" expand="block" (click)="eliminarReporte(report)" shape="round">Eliminar</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      
   
